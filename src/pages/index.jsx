@@ -10,7 +10,7 @@ export default function Home() {
   async function handleSubmit(e) {
     try {
       e.preventDefault()
-      const response = await fetch(`http://localhost:3000/api/${mlb}`) // 2986493277
+      const response = await fetch(`/api/${mlb}`) // 2986493277
       const data = await response.json()
       if (response.status !== 200) throw new Error(data)
       setError('')
