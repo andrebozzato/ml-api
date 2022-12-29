@@ -6,13 +6,25 @@ export async function buscarAnuncio(mlb) {
 
     if (response.status !== 200) throw new Error('Anuncio não encontrado')
 
+    const mapVarName = (variation) => variation.map((v) => v.name)
+
+    function groupBy(array, key) {
+      return array.reduce(
+        (acc, item) => ({
+          ...acc,
+          [item[key]]: [...(acc[item[key]] ?? []), item],
+        }),
+        {}
+      )
+    }
+
     const produto = {
       id: data.id,
       nome: data.title,
-
       variacoes: data.variations.map((item) => ({
         id: item.id,
-        nome: `${item.attribute_combinations[0].name} ${item.attribute_combinations[0].value_name}`,
+        nome: item.attribute_combinations.map((i) => i.name).join('/'),
+        valor: item.attribute_combinations.map((i) => i.value_name).join('/'),
       })),
     }
 

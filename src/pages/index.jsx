@@ -68,18 +68,21 @@ export default function Home() {
         {produto && (
           <ul
             className={`
-              w-full grid grid-cols-4 rounded border border-gray-300
+              w-full grid grid-cols-3 rounded border border-gray-300
             `}
           >
             <li className={`${li}`}>{produto.id}</li>
-            <li className={`${li} col-span-3`}>{produto.nome}</li>
+            <li className={`${li} col-span-2`}>{produto.nome}</li>
             {produto?.variacoes?.map((item) => (
               <>
                 <li className={`${li}`} key={item.id}>
                   {item.id}
                 </li>
-                <li key={item.nome} className={`${li} col-span-3`}>
+                <li key={item.nome} className={`${li}`}>
                   {item.nome}
+                </li>
+                <li key={item.valor} className={`${li}`}>
+                  {item.valor}
                 </li>
               </>
             ))}
