@@ -4,7 +4,7 @@ const li = 'border border-gray-300 px-2 py-1 text-sm'
 
 export default function Home() {
   const [mlb, setMlb] = useState('')
-  const [produto, setProduto] = useState({})
+  const [produto, setProduto] = useState('')
   const [error, setError] = useState('')
 
   async function handleSubmit(e) {
