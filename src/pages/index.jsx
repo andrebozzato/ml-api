@@ -82,7 +82,11 @@ export default function Home() {
             >
               <li className={`${li}`}>{produto.id}</li>
               <li className={`${li} col-span-2`}>
-                <Link href={produto.url} className="text-blue-700">
+                <Link
+                  href={produto.url}
+                  className="text-blue-700"
+                  target="_blank"
+                >
                   {produto.nome}
                 </Link>
               </li>
