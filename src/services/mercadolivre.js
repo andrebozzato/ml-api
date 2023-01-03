@@ -12,6 +12,8 @@ export async function buscarAnuncio(mlb) {
     const produto = {
       id: data.id,
       nome: data.title,
+      img: data.pictures[0].url,
+      url: data.permalink,
       variacoes: data.variations
         .map((item) => ({
           id: item.id,

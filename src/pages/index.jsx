@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 const li = 'border border-gray-300 px-2 py-1 text-sm'
@@ -66,27 +68,39 @@ export default function Home() {
         )}
 
         {produto && (
-          <ul
-            className={`
+          <>
+            <Image
+              src={produto.img}
+              alt="imagem produto"
+              width={100}
+              height={100}
+            />
+            <ul
+              className={`
               w-full grid grid-cols-3 rounded border border-gray-300
             `}
-          >
-            <li className={`${li}`}>{produto.id}</li>
-            <li className={`${li} col-span-2`}>{produto.nome}</li>
-            {produto?.variacoes?.map((item) => (
-              <>
-                <li className={`${li}`} key={item.id}>
-                  {item.id}
-                </li>
-                <li key={item.nome} className={`${li}`}>
-                  {item.nome}
-                </li>
-                <li key={item.valor} className={`${li}`}>
-                  {item.valor}
-                </li>
-              </>
-            ))}
-          </ul>
+            >
+              <li className={`${li}`}>{produto.id}</li>
+              <li className={`${li} col-span-2`}>
+                <Link href={produto.url} className="text-blue-700">
+                  {produto.nome}
+                </Link>
+              </li>
+              {produto?.variacoes.map((item) => (
+                <>
+                  <li className={`${li}`} key={item.id}>
+                    {item.id}
+                  </li>
+                  <li key={item.nome} className={`${li}`}>
+                    {item.nome}
+                  </li>
+                  <li key={item.valor} className={`${li}`}>
+                    {item.valor}
+                  </li>
+                </>
+              ))}
+            </ul>
+          </>
         )}
       </main>
     </div>
